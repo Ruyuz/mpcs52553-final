@@ -1,0 +1,21 @@
+<% concert = Concert.find_by(id: params["id"]) %>
+
+<h1>Editing <%= Concert.name %></h1>
+
+<div class="row">
+  <div class="col-sm-4">
+
+    <%= form_tag "/concerts/#{concert.id}", method: "patch" do %>
+
+      <p>Name: <input value="<%= concert.name %>" name="name" type="text" autofocus class="form-control"></p>
+      <p>City: <input value="<%= concert.city %>"  name="city" type="text" class="form-control"></p>
+      <p>Date: <input value="<%= concert.date %>" name="date" type="text" class="form-control"></p>
+      <p>Time: <input value="<%= concert.time %>" name="address" type="text" class="form-control"></p>
+      <p>Address: <input value="<%= concert.address %>" name="address" type="text" class="form-control"></p>
+      <p>Poster URL: <input value="<%= concert.poster_url %>" name="poster_url" type="text" class="form-control"></p>
+      <button class="btn btn-primary">Update concert</button>
+
+    <% end %>
+
+  </div>
+</div>

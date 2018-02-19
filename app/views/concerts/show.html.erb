@@ -1,0 +1,16 @@
+<% concert = Concert.find_by(id: params["id"]) %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1><%= concert.name %></h1>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-sm-12">
+    <p>City: <%="#{concert.city}"%></p>
+    <p>Date: <%="#{concert.date}"%></p>
+    <p>Time: <%="#{concert.time}"%></p>
+    <p>Address: <%="#{concert.address}"%></p>
+  </div>
+</div>

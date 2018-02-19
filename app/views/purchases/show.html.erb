@@ -1,0 +1,11 @@
+<h1>Purchase Details</h1>
+<hr>
+
+<% purchase = Purchase.find_by(id: params["id"]) %>
+<% concert = Concert.find_by(id: purchase.concert_id) %>
+<% user = User.find_by(id: purchase.user_id) %>
+
+<p>User Name: <%= user.username %></p>
+<p>User Email: <%= user.email %></p>
+<p>Concert: <%= concert.name %></p>
+<p>Updated at: <%= purchase.update_time %></p>

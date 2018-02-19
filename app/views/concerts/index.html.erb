@@ -1,0 +1,21 @@
+<div class="row">
+
+  <div class="col-sm-3 my-3">
+    <%= link_to image_tag("add_concerts.jpg"), "/concerts/new" %>
+  </div>
+
+  <% Concert.all.order('created_at desc').each do |concert| %>
+
+    <div class="col-sm-3 my-3 text-center">
+      <% poster_url = (concert.poster_url.present? ? concert.poster_url : 'blank_poster.jpg') %>
+      <%= link_to image_tag(poster_url, :class => "img-fluid"), "/concerts/#{concert.id}" %>
+      <p> <%=concert.name%> </p>
+      <p>
+        <%= link_to "[Delete]", "/concerts/#{concert.id}", method: "delete" %>
+        <%= link_to "[Edit]", "/concerts/#{concert.id}/edit" %>
+      </p>
+    </div>
+
+  <% end %>
+
+</div>
