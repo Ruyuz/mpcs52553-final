@@ -1,6 +1,6 @@
 class Concert < ApplicationRecord
 
-  has_many :purchases
+  belongs_to :singer, optional: true
 
   validates :name, :city, :date, :time, :address, presence: true
   validates :name, uniqueness: true

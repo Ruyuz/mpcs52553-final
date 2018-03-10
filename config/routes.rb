@@ -18,13 +18,10 @@ Rails.application.routes.draw do
     get "/users/:id/edit" => 'users#edit'
     patch "/users/:id" => 'users#update'
 
-    get "/purchases" => "purchases#index"
-    get "/purchases/new" => 'purchases#new'
-    post "/purchases" => 'purchases#create'
-    get "/purchases/:id" => 'purchases#show'
-    delete "/purchases/:id" => 'purchases#destroy'
-    get "/purchases/:id/edit" => 'purchases#edit'
-    patch "/purchases/:id" => 'purchases#update'
+    resources :singers
 
+    get "/sessions/new" => 'sessions#new'
+    post "/sessions" => 'sessions#create'
+    get "/logout" => 'sessions#destroy'
 
 end

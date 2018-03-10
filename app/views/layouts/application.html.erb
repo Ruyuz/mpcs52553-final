@@ -17,27 +17,54 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/concerts">Home</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+
+      <div class="navbar-header">
+
+        <!-- Navbar Brand: Logo or Brand Name -->
+        <a class="navbar-brand" href="/concerts">Home</a>
+        <!-- Toggle Button -->
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+        <ul class="mr-auto navbar-nav mt-2 mt-md-0">
           <li class="nav-item"><a class="nav-link" href="/concerts">Concerts</a></li>
           <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
-          <li class="nav-item"><a class="nav-link" href="/purchases">Purchases</a></li>
-          </li>
+
+          <% if session[:user_id] != nil %>
+          <li class="nav-item"><a class="nav-link" href="/singers">Singers</a></li>
+          <% end %>
         </ul>
+
+                <form class="form-inline my-2 my-lg-0 mx-auto">
+                  <input name="keyword" class="form-control mr-sm-2" size="30" type="search" placeholder="Search by course, instructor..." aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                
+
         <ul class="navbar-nav ml-auto">
+          <% if session[:user_id] != nil %>
+            <li class="nav-item"><%= link_to "My Account", "/users/#{session[:user_id]}" %></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+          <% else %>
             <li class="nav-item"><a class="nav-link" href="/users/new">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link" href="/sessions/new">Login</a></li>
+          <% end %>
         </li>
       </ul>
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">
+
+      <% if notice.present? %>
+        <div class="alert alert-primary">
+          <%= notice %>
+        </div>
+      <% end %>
 
       <%= yield %>
 

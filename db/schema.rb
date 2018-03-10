@@ -21,25 +21,22 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "poster_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "singer_id"
+    t.index ["singer_id"], name: "index_concerts_on_singer_id"
   end
 
-  create_table "purchases", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "concert_id"
-    t.datetime "update_time"
+  create_table "singers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["concert_id"], name: "index_purchases_on_concert_id"
-    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
     t.string "email"
-    t.boolean "is_admin", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "password_digest"
+    t.string "username"
   end
 
 end

@@ -1,0 +1,25 @@
+<div class="row">
+
+  <div class="my-3">
+    <%= link_to "Add a New Singer", "/singers/new", class: 'btn btn-primary' %>
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Singer.all.order('name').each do |singer| %>
+        <tr>
+          <td><%= link_to singer.name, "/singers/#{singer.id}" %></td>
+          <td><%= link_to "[Edit]", "/singers/#{singer.id}/edit" %></td>
+          <td><%= link_to "[Delete]", "/singers/#{singer.id}", method: 'delete' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

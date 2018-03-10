@@ -5,17 +5,15 @@ Concert
   time: string
   address: text
   poster_url: text
+  singer_id: integer
 
 User
   username: string
-  password: string
+  password_digest: string
   email: string
-  is_admin: boolean(false)
 
-Purchase
-  user_id: integer
-  concert_id: integer
-  update_time: datetime
+Singer
+  name: string
 
 
 
