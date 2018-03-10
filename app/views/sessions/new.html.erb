@@ -1,16 +1,58 @@
-<h1>Login</h1>
+<h3 class="text-center">Login</h1>
 
+<div class="container">
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-4 offset-sm-4 centered">
 
     <%= form_tag "/sessions" do %>
 
-      <p>Email: <input name="email" type="text" autofocus class="form-control"></p>
-      <p>Password: <input name="password" type="password" autofocus class="form-control"></p>
+      <p>Email: <input name="email" type="text" autofocus class="form-control" required></p>
+      <p>Password: <input name="password" type="password" autofocus class="form-control" required></p>
 
-      <button class="btn btn-primary">Let Me In!</button>
+      <button class="btn btn-primary btn-block">Log In</button>
+      <%= link_to "Cancel", "/", class: 'btn btn-secondary btn-block' %>
+
+      <p>
+      	<h5 class="text-center">New to Music Village?<br>
+      		<a href="/users/new">Sign Up</a></h5>
+      </p>
 
     <% end %>
 
   </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+  <hr>
+  <p class="text-center">
+  fast login information, FYI.
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>jacky@example.org</td>
+          <td>jacky123</td>
+        </tr>
+        <tr>
+          <td>bunny@example.org</td>
+          <td>bunny456</td>
+        </tr>
+        <tr>
+          <td>leven@example.org</td>
+          <td>leven789</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
 </div>

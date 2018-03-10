@@ -1,8 +1,13 @@
+<BR>
+<h1 class="text-center">Music Village</h1>
+
 <div class="row">
 
-  <div class="col-sm-3 my-3">
+  <% if session[:user_id] != nil %>
+  <div class="col-sm-3 my-3 text-center">
     <%= link_to image_tag("add_concerts.jpg", :class => "img-fluid"), "/concerts/new" %>
   </div>
+  <% end %>
 
   <% @concerts.each do |concert| %>
 

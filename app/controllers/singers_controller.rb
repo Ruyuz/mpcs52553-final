@@ -14,8 +14,13 @@ class SingersController < ApplicationController
   end
 
   def create
-    Singer.create :name => params["name"]
-    redirect_to "/singers", notice: "Singer added"
+    singer = Singer.find_by(name: params["name"])
+    if singer == nil
+      Singer.create :name => params["name"]
+      redirect_to "/singers", notice: "Singer added"
+    else
+      redirect_to "/singers", notice: "Singer already existed!"
+    end
   end
 
 end
